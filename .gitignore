@@ -1,0 +1,13 @@
+__pycache__/
+build/
+venv/
+dev/
+.git/
+.vscode/
+archive/
+.env
+*.pyc
+.mkconfig/
+TODO
+.codex/
+AGENTS.md
