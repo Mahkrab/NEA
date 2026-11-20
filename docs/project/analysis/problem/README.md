@@ -103,13 +103,6 @@ sequenceDiagram
 
 Each client will use a selected profile directory. Keys, contacts and MLS state will go in **SQLite encrypted with [SQLCipher](https://www.zetetic.net/sqlcipher/design/)**, unlocked through a hidden passphrase prompt. I will reject unencrypted SQLite and keep passphrases out of configuration, arguments and logs.
 
-I plan to use OpenMLS's SQLite provider with SQLCipher, using Cargo-locked versions. Non-secret settings will go in `config.toml`. The relay will initially hold state in memory and lose it on restart.
+I plan to use OpenMLS's SQLite provider with SQLCipher. Non-secret settings will go in `config.toml`. The relay will initially hold state in memory and lose it on restart.
 
 Old keys must be removed when no longer needed. Encryption does not prevent restoring an old database, so restored profiles will need fresh conversations. Secure deletion remains a limitation. Portable storage and memory-only operation remain optional and will need checks for logs, temporary files, swap and crash dumps.
-
-## Milestones and checks
-
-- **Milestone 1:** local encrypted exchange; check tampering, wrong recipient keys, profile reload and wrong passphrases.
-- **Milestone 2:** separate network relay, TLS and access control.
-- **Milestone 3:** offline delivery, expiry, retries, duplicates, delayed key-state changes and restart recovery.
-- **Milestone 4:** usable contacts, configuration and storage, including persistent history.
